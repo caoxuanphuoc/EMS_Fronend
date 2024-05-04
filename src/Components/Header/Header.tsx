@@ -4,7 +4,7 @@ import {
 const Header = () => {
 
     return (
-        <div className="navBar flex justify-between mt-5 pb-4">
+        <div className="navBar flex justify-between py-4 bg-blue-50 px-5">
             <div className="logoDiv">
                 <NavLink
                     to="/"
@@ -14,21 +14,17 @@ const Header = () => {
                 </NavLink>
             </div>
             <div className="menu flex gap-5">
-                <li className="menuList text-[#6f6f6f] hover:text-blueColor">
-                    <NavLink
-                        to="/"
-                    >
+                <li className="menuList text-[#6f6f6f] hover:text-blueColor header-hover">
+                    <NavLink to="/" >
                         Trang chủ
                     </NavLink>
                 </li>
-                <li className="menuList text-[#6f6f6f] hover:text-blueColor">
+                <li className="menuList text-[#6f6f6f] hover:text-blueColor header-hover">
 
-                    <NavLink
-                        to="/about"
-                    >
+                    <NavLink to="/about">
                         Về chúng tôi
                     </NavLink>
-                </li><li className="menuList text-[#6f6f6f] hover:text-blueColor">
+                </li><li className="menuList text-[#6f6f6f] hover:text-blueColor header-hover">
                     <NavLink
                         to="/course"
                     >
@@ -38,7 +34,12 @@ const Header = () => {
 
                 <li className="menuList text-[#6f6f6f]">
                     <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white px-3  border border-blue-500  rounded">
-                        Login
+
+                        <NavLink
+                            to="/auth"
+                        >
+                            Login
+                        </NavLink>
                     </button>
                 </li>
                 <li className="menuList text-[#6f6f6f] hover:text-blueColor">
