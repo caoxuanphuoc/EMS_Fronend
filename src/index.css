@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {}
+
+body {
+    background: white;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.header-hover:hover::before {
+    position: absolute;
+    content: '';
+    height: 4px;
+    width: 100%;
+    background: #2a68ff;
+    bottom: -5px;
+    color: #2a68ff;
+}
+
+.icon {
+    cursor: pointer;
+}
