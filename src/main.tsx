@@ -7,19 +7,23 @@ import Course from './Components/Course/CourseDiv.tsx'
 import SearchBar from './Components/SearchDiv/Search.tsx'
 import HomePage from './Components/Home/HomePage.tsx'
 import Login from './Scenes/Home/Login.tsx'
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App />} >
-          <Route index element={<HomePage />} />
-          <Route path='/course' element={<Course />} />
-          <Route path='/about' element={<SearchBar />} />
-        </Route>
-        <Route path='/auth' element={<Login isRegister={false} />} />
-      </Routes>
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<App />} >
+            <Route index element={<HomePage />} />
+            <Route path='/course' element={<Course />} />
+            <Route path='/about' element={<SearchBar />} />
+          </Route>
+          <Route path='/auth' element={<Login isRegister={false} />} />
+        </Routes>
 
-    </BrowserRouter>
-  </React.StrictMode>,
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>,
 )
