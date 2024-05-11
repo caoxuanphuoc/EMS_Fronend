@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path='/about' element={<SearchBar />} />
           </Route>
           <Route path='/auth' element={<Login isRegister={false} />} />
+          <Route path='/register' element={<Login isRegister={true} />} />
         </Routes>
 
       </BrowserRouter>

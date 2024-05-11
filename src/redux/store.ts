@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import AuthReducer from './slices/AuthSlice'
-import userReducer from './slices/UserSlice'
+import SessionReducer from './slices/Session/SessionSlice'
 export const store = configureStore({
     reducer: {
         auth: AuthReducer,
-        user: userReducer
+        session: SessionReducer
     },
 })
 
