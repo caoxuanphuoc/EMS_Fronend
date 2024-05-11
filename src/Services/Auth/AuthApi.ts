@@ -1,6 +1,7 @@
 import axios, { AxiosResponse, HttpStatusCode } from 'axios'
 import { BaseResponse } from '../Common/ResponseBase'
 import { loginDto } from './Dtos/loginDto'
+import { RegisterDto } from './Dtos/registerDto'
 export class AuthApiClass {
     config = {
         headers: {
@@ -8,7 +9,8 @@ export class AuthApiClass {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
-            'Authorization': localStorage.getItem('accessToken')
+            'Authorization': localStorage.getItem('accessToken'),
+            'Abp.TenantId': 1,
         }
     }
     login = async (body: any) => {
@@ -18,6 +20,12 @@ export class AuthApiClass {
             localStorage.setItem("accessToken", response.data.result.accessToken)
         }
 
+        return response.data
+
+    }
+    register = async (body: any) => {
+        const response: AxiosResponse<BaseResponse<RegisterDto>> =
+            await axios.post<BaseResponse<RegisterDto>>('/api/User/Resgiter', body, this.config);
         return response.data
     }
 }
