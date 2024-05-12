@@ -10,7 +10,8 @@ export class SessionApiClass {
             // 'Access-Control-Allow-Origin': '*',
             // 'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
             // 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
-            Authorization: "Bearer " + localStorage.getItem('accessToken')
+            Authorization: "Bearer " + localStorage.getItem('accessToken'),
+            'Abp.TenantId': 1,
         }
     }
 
