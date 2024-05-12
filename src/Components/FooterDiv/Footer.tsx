@@ -1,20 +1,20 @@
 import React from "react";
 
-const Footer =() =>{
-    return(
-        <div className="footer p-[5rem] mb-4 bg-blueColor rounded-[10px] gap-[8] grid grid-cols-5 m-auto items-center justify-center">
-            <div>
+const Footer = () => {
+    return (
+        <div className="footer p-[5rem] bg-blue-400 rounded-[10px] gap-[8] grid grid-cols-5 m-auto items-center justify-center">
+            <div className="">
                 <div className="logoDiv">
-                    <h1 className="logo text-[25px] text-white pb-[1.5rem]">
+                    <h1 className=" text-[25px] text-white ">
                         <strong>ECMS</strong>
                     </h1>
+                    <p className="font-medium text-blue-50" >
+                        Học tập là quá trình nỗ lực không ngừng nghĩ, M Tracker rất vui khi có thể đồng hành cùng bạn trên chặng đường đầy thử thách này.
+                        <br />   MTracker Nơi tri thức là sức mạnh.
+                    </p>
                 </div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, eius est. 
-                    Sed corporis quibusdam, architecto enim dolor eaque maxime commodi, fuga natus ab tempore vitae, asperiores vero! Veniam, porro natus?
-                </p>
             </div>
-            <div className="grid">
+            <div className="grid ml-10">
                 <span className=" divTitle text-[18px] font-semibold pb-[1.5rem] text-white">
                     Company
                 </span>

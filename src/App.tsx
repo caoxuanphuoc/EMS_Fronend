@@ -10,20 +10,23 @@ import { Outlet } from 'react-router-dom'
 const App = () => {
 
   return (
-    <div className='app-container'>
+    <div className='app-container relative'>
       <div className="header-container">
         <Header />
       </div>
-      <div className="main-container">
+      <div className="main-container sticky">
         <div className="sideNav"></div>
         <div className="app-content">
           <Outlet />
         </div>
       </div>
+      <div className='mt-16 sticky'>
+        <Footer />
+      </div>
       {/* <NavBar />
       <SearchBar />
       <Course />
-      <Footer /> */}
+      */}
     </div>
   )
 }
