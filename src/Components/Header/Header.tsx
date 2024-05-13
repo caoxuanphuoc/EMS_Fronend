@@ -23,7 +23,7 @@ const Header = () => {
         return navigate("/");
     }
     return (
-        <div className="fixed navBar flex justify-between py-4 bg-blue-50 px-5 z-10 w-full">
+        <div className="navBar flex justify-between py-4 bg-blue-100 px-5 z-10 w-full">
             <div className="logoDiv">
                 <NavLink
                     to="/"
