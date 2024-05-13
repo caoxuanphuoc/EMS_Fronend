@@ -9,26 +9,26 @@ import { Outlet } from 'react-router-dom'
 
 const App = () => {
 
-  return (
-    <div className='app-container relative'>
-      <div className="header-container">
-        <Header />
-      </div>
-      <div className="main-container sticky">
-        <div className="sideNav"></div>
-        <div className="app-content">
-          <Outlet />
-        </div>
-      </div>
-      <div className='mt-16 sticky'>
-        <Footer />
-      </div>
-      {/* <NavBar />
+    return (
+        <div className='bg-blue-50'>
+            <div className="header-container">
+                <Header />
+            </div>
+            <div className="main-container">
+                <div className="sideNav"></div>
+                <div className="app-content">
+                    <Outlet />
+                </div>
+            </div>
+            <div className='mt-16 '>
+                <Footer />
+            </div>
+            {/* <NavBar />
       <SearchBar />
       <Course />
       */}
-    </div>
-  )
+        </div>
+    )
 }
 
 export default App
