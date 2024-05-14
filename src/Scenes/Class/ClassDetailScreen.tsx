@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import imgDefault from "../../assets/Images/defaultClass.jpg"
 import { MdClass, MdAssignmentInd, MdAvTimer, MdCheck } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
@@ -25,6 +25,7 @@ const ClassDetailScreen = () => {
     const data = useAppSelector((state: RootState) => { return state.classes.data?.items })
     const listClass = data ? data : [];
     const dataDetail = useAppSelector((state: RootState) => { return state.classDetail.data })
+    const userInfo = useAppSelector((stare: RootState) => { return stare.session.data?.user })
     useEffect(() => {
         const resgData: PagedClassResultRequestDto = {
             maxResultCount: 10,
@@ -33,6 +34,20 @@ const ClassDetailScreen = () => {
         dispatch(ClassByIdAction(location.state.id))
         dispatch(GetAllClassAction(resgData))
     }, [location])
+    const navigate = useNavigate();
+    const hanldeValidateOrder = () => {
+        let classId = location.state.id;
+        let userId = userInfo?.id;
+        if (userId == undefined || userId == null) {
+            navigate(
+                "/auth"
+            );
+        }
+
+        navigate(
+            "/payment?idClass=" + classId + "&userId=" + userId
+        );
+    }
     return (
         <div className='app-container '>
             <div className=" grid grid-rows-2 grid-cols-3 gap-4 bg mb-10 ">
@@ -99,7 +114,7 @@ const ClassDetailScreen = () => {
                             </div>
                         </ul>
                     </div>
-                    <div className="h-[300px] mt-10  ">
+                    <div className="h-full mt-10  ">
                         <span className="font-bold text-2xl">Khóa học liên quan:</span>
                         <div className="flex flex-wrap  ">
                             {
@@ -122,7 +137,9 @@ const ClassDetailScreen = () => {
                 </div>
                 <div className=" row-span-1 col-span-1  ">
                     <div className=" p-2 mt-[100px]">
-                        <img src={dataDetail?.image ? dataDetail?.image : imgDefault} className="rounded-lg" />
+                        <div className="">
+                            <img src={dataDetail?.image ? dataDetail?.image : imgDefault} className="rounded-lg object-fill h-50 w-96" />
+                        </div>
                         <div className="flex justify-center mt-5">
                             <div>
                                 <span className="text-blue-500 font-semibold text-3xl text-center">{NumberHelpers.formatNumberMoney(dataDetail ? dataDetail.course.courseFee : 0)}</span>
@@ -131,7 +148,7 @@ const ClassDetailScreen = () => {
                         </div>
                         <div className="flex justify-center mt-2">
                             <div>
-                                <button className="p-3 mt-2 rounded-2xl transition ease-in-out delay-150 bg-blue-500 text-white hover:-translate-y-1 hover:scale-110 hover:bg-orange-500  duration-200 font-semibold">ĐĂNG KÝ HỌC</button>
+                                <button onClick={hanldeValidateOrder} className="p-3 mt-2 rounded-2xl transition ease-in-out delay-150 bg-blue-500 text-white hover:-translate-y-1 hover:scale-110 hover:bg-orange-500  duration-200 font-semibold">ĐĂNG KÝ HỌC</button>
                             </div>
                         </div>
                         <div className="ml-16 mt-5">
