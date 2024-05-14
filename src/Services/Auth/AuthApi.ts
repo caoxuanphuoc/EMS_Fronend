@@ -15,7 +15,13 @@ export class AuthApiClass {
     }
     login = async (body: any) => {
         const response: AxiosResponse<BaseResponse<loginDto>> =
-            await axios.post<BaseResponse<loginDto>>('/api/TokenAuth/Authenticate', body, this.config);
+            await axios.post<BaseResponse<loginDto>>('/api/TokenAuth/Authenticate', body, {
+                headers: {
+                    'Abp.TenantId': 1
+
+                }
+
+            });
         if (response.status == HttpStatusCode.Ok) {
             localStorage.setItem("accessToken", response.data.result.accessToken)
         }
