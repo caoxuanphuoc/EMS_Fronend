@@ -1,10 +1,76 @@
-import { useState } from "react";
-import Bill from "../../Components/Order/bill"
+import { useEffect, useState } from "react";
 import logo_bank from "../../assets/Images/payment_bank.png"
 import logo_nvpay from "../../assets/Images/vnpt-pay.png"
 import qrVietin from "../../assets/Images/qrVietin.jpg"
 import { Modal } from "antd";
+import Bill from "../../Components/Order/Bill";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ValidateOrderInfoDto } from "../../Services/Payment/Dto/ValidateOrderInfoDto";
+import { PaymentApi } from "../../Services/Payment/PaymentService";
+import { inputValidateOrderDto } from "../../Services/Payment/Dto/inputValidateorderDto";
+
 const PageOrder = () => {
+    //#region config info order
+
+    const [InforOrder, SetInforOrder] = useState<ValidateOrderInfoDto>({
+        userId: 0,
+        fullName: "",
+        email: "",
+        classId: 0,
+        className: "",
+        courseName: "",
+        fee: 0,
+        discount: 0,
+        orderTotal: 0
+    })
+    console.log("order InforOrder", InforOrder);
+
+    const location = useLocation()
+
+    const [change, setchange] = useState(true)
+
+    const ValidateOrder = async () => {
+        const useQuery = () => {
+
+            return new URLSearchParams(location.search);
+        };
+        const query = useQuery();
+        const idClass = query.get('idClass');  // Lấy giá trị tham số 'name'
+        const userId = query.get('userId');
+        const dataValid: inputValidateOrderDto = {
+            classId: Number(idClass),
+            userId: Number(userId),
+            codeAffilate: "Nocode"
+        };
+        const res = await PaymentApi.ValidateOrder(dataValid)
+        console.log("order ValidateOrder", res);
+        SetInforOrder(res.result);
+        setchange(false)
+    }
+    useEffect(() => {
+        ValidateOrder()
+    }, [])
+
+    //#endregion
+
+    //#region get ULR vnpay
+    const navigate = useNavigate();
+
+    const handleVnPay = async () => {
+        const fetchLink = async () => {
+            const url = await PaymentApi.GetVnpayUrl(InforOrder)
+            return url
+        }
+        const link = await fetchLink()
+        console.log("LINKKKKK", link);
+        window.location.href = link;
+
+
+    }
+    //#endregion
+
+    //#region config modal
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
@@ -18,6 +84,8 @@ const PageOrder = () => {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+    //#endregion
+
     return (
         <div className=" grid grid-rows-10 h-max " >
 
@@ -26,8 +94,16 @@ const PageOrder = () => {
             </div>
             <div className=" row-span-1 grid grid-cols-8 h-full items-center">
                 <div className=" col-start-2 col-span-4 bg-green-50 pb-10">
-                    <Bill />
-
+                    <Bill classId={InforOrder.classId}
+                        userId={InforOrder.userId}
+                        fullName={InforOrder.fullName}
+                        email={InforOrder.email}
+                        className={InforOrder.className}
+                        courseName={InforOrder.courseName}
+                        fee={InforOrder.fee}
+                        discount={InforOrder.discount}
+                        orderTotal={InforOrder.orderTotal}
+                    />
                 </div>
                 <div className=" col-start-6 col-span-3 bg-green-50 mx-10 ">
                     <div className="border-2 border-gray-500 rounded-2xl bg-white p-9" >
@@ -35,7 +111,7 @@ const PageOrder = () => {
                         <hr className="px-3 my-5" />
                         <div className="flex flex-wrap gap-2 justify-between">
                             <img onClick={showModal} src={logo_bank} alt="" className="border-2 hover:cursor-pointer p-3 mt-2 rounded-2xl transition ease-in-out delay-150  text-white hover:-translate-y-1 hover:scale-110 hover:bg-orange-400  duration-200 font-semibold" />
-                            <img onClick={showModal} src={logo_nvpay} alt="" className="border-2 hover:cursor-pointer p-3 mt-2 rounded-2xl transition ease-in-out delay-150  text-white hover:-translate-y-1 hover:scale-110 hover:bg-orange-400  duration-200 font-semibold" />
+                            <img onClick={handleVnPay} src={logo_nvpay} alt="" className="border-2 hover:cursor-pointer p-3 mt-2 rounded-2xl transition ease-in-out delay-150  text-white hover:-translate-y-1 hover:scale-110 hover:bg-orange-400  duration-200 font-semibold" />
                         </div>
                         <hr className="px-1 border-2 bg-black my-10" />
                         <div className="flex justify-center">
