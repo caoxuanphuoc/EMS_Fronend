@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 import { BaseResponse } from "../Common/ResponseBase";
-import { inputValidateOrderDto } from "./Dto/inputValidateorderDto";
 import { ValidateOrderInfoDto } from "./Dto/ValidateOrderInfoDto";
+import { CreateOrderHistoryDto } from "./Dto/CreateOrderHistoryDto";
+import { OrderHistoryDto } from "./Dto/OrderHistoryDto";
+import { inputValidateOrderDto } from "./Dto/inputValidateOrderDto";
 export class PaymentApiClass {
 
     config = {
@@ -34,6 +36,16 @@ export class PaymentApiClass {
                 this.config
             );
         console.log("API GetVnpayUrl", response.data);
+
+        return response.data?.result
+    }
+    updateStatusVnPay = async (input: CreateOrderHistoryDto) => {
+        const response: AxiosResponse<BaseResponse<OrderHistoryDto>> =
+            await axios.post<BaseResponse<OrderHistoryDto>>('/api/services/app/OrderHistory/Create',
+                input,
+                this.config
+            );
+        console.log("updateStatusVnPay", response.data);
 
         return response.data?.result
     }

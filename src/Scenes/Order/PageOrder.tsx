@@ -7,7 +7,7 @@ import Bill from "../../Components/Order/Bill";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ValidateOrderInfoDto } from "../../Services/Payment/Dto/ValidateOrderInfoDto";
 import { PaymentApi } from "../../Services/Payment/PaymentService";
-import { inputValidateOrderDto } from "../../Services/Payment/Dto/inputValidateorderDto";
+import { inputValidateOrderDto } from "../../Services/Payment/Dto/inputValidateOrderDto";
 
 const PageOrder = () => {
     //#region config info order
