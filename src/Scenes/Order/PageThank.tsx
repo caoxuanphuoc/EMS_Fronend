@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
-
+import { PaymentApi } from "../../Services/Payment/PaymentService"
+import { CreateOrderHistoryDto } from "../../Services/Payment/Dto/CreateOrderHistoryDto"
 const PageThank = () => {
     const location = useLocation()
     useEffect(() => {
@@ -31,6 +32,19 @@ const PageThank = () => {
         console.log("vnp_TransactionNo", vnp_TransactionNo)
         console.log("vnp_TransactionStatus", vnp_TransactionStatus)
         console.log("vnp_TxnRef", vnp_TxnRef)
+        ////////////////
+        const InforOrder: CreateOrderHistoryDto = {
+            TransactionNo: vnp_TransactionNo ? vnp_TransactionNo : "",
+            ResponseCode: vnp_ResponseCode == "00" ? 200 : 400,
+            Message: vnp_OrderInfo ? vnp_OrderInfo : "",
+            OrderCode: vnp_TxnRef ? vnp_TxnRef : ""
+        };
+        const fetchLink = async () => {
+            const url = await PaymentApi.updateStatusVnPay(InforOrder)
+            return url
+        }
+        fetchLink()
+
     })
     http://localhost:5173/thank?vnp_Amount=36000000&vnp_BankCode=NCB&vnp_BankTranNo=VNP14414883&vnp_CardType=ATM&vnp_OrderInfo=AECMS000005&vnp_PayDate=20240515003408&vnp_ResponseCode=00&vnp_TmnCode=PI7EWKGJ&vnp_TransactionNo=14414883&vnp_TransactionStatus=00&vnp_TxnRef=638513299695464691&vnp_SecureHash=8682badbbbf995c3081a96006374446732378b8e69e8646b4a91fb5069f5566b5b9b10f1dfc2a0990bb4d9b3c9635a724a301189ac57670a4a2a58e69097af71
     return (
