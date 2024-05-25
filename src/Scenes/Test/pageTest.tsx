@@ -1,17 +1,17 @@
-import { PagedClassResultRequestDto } from "../../Services/Classes/dto/PagedClassResultRequestDto"
-import { useAppDispatch } from "../../redux/hook"
-import { GetAllClassAction } from "../../redux/slices/Classes/ClassesSlice"
-const TestPage = (props: any) => {
-    const dispatch = useAppDispatch()
-    const hanldeTesting = () => {
-        // Data
-        let resgData: PagedClassResultRequestDto = {
-            maxResultCount: 10,
-            skipCount: 0
-        }
-        //send
-        dispatch(GetAllClassAction(resgData))
-    }
+//import { PagedClassResultRequestDto } from "../../Services/Classes/dto/PagedClassResultRequestDto"
+//import { useAppDispatch } from "../../redux/hook"
+//import { GetAllClassAction } from "../../redux/slices/Classes/ClassesSlice"
+const TestPage = () => {
+    // const dispatch = useAppDispatch()
+    // const hanldeTesting = () => {
+    //     // Data
+    //     let resgData: PagedClassResultRequestDto = {
+    //         maxResultCount: 10,
+    //         skipCount: 0
+    //     }
+    //     //send
+    //     dispatch(GetAllClassAction(resgData))
+    // }
 
     return (
         <div>

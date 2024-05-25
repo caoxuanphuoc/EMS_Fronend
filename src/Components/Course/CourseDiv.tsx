@@ -1,8 +1,7 @@
-import React from "react";
 import { BiTimeFive } from 'react-icons/bi'
 import { DateHelpers } from "../../Helpers/DateHelper";
 import { NumberHelpers } from "../../Helpers/NumberHelper"
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface classProps {
     id: number,
@@ -17,7 +16,7 @@ const Course = (props: classProps) => {
     const navigate = useNavigate();
     const handelNavLink = (idCourse: number) => {
         navigate(
-            "/detail?id=" + idCourse,
+            "/detail?id=" + idCourse + "/#detailClass",
             {
                 state: {
                     id: idCourse

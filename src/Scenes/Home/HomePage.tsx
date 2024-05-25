@@ -3,11 +3,11 @@ import Course from "../../Components/Course/CourseDiv"
 import Slider from "../../Components/Header/Slider"
 import SearchBar from "../../Components/SearchDiv/Search"
 import { useAppDispatch, useAppSelector } from "../../redux/hook"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { GetAllClassAction } from "../../redux/slices/Classes/ClassesSlice"
 import { RootState } from "../../redux/store"
 import imgDefault from "../../assets/Images/defaultClass.jpg"
-const HomePage = (props: any) => {
+const HomePage = () => {
     const dispatch = useAppDispatch();
 
     //send

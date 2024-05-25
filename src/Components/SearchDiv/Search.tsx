@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineSearch, AiOutlineCloseCircle } from 'react-icons/ai'
 
 const SearchBar = () => {

@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { ClassesApi } from '../../../Services/Classes/ClassesAPI'
-import { PagedClassResultRequestDto } from '../../../Services/Classes/dto/PagedClassResultRequestDto'
-import { PagedResultDto } from '../../../Services/Common/PagedResultDto'
 import { GetAllClassOuput } from '../../../Services/Classes/dto/getAllClassOutput'
 
 export const ClassByIdAction = createAsyncThunk(

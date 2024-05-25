@@ -49,9 +49,9 @@ const ClassDetailScreen = () => {
         );
     }
     return (
-        <div className='app-container '>
+        <div className='app-container ' >
             <div className=" grid grid-rows-2 grid-cols-3 gap-4 bg mb-10 ">
-                <div className=" row-span-2 col-span-2  mt-[100px] p-5 pl-[50px]">
+                <div className=" row-span-2 col-span-2  mt-[100px] p-5 pl-[50px]" id='detailClass'>
                     <div className="h-[150px] row-span-2">
                         <h2 className="text-3xl font-bold">{dataDetail?.className}</h2>
                         <p>{dataDetail?.className}</p>
@@ -64,7 +64,7 @@ const ClassDetailScreen = () => {
                                     <span className="flex items-center gap-1">
                                         <MdCheck color="green" />
                                         <div className="w-[300px] text-sm">
-                                            Hiểu chi tiết về các khái niệm cơ bản trong JS
+                                        Nắm chắc toàn bộ các kiến thức theo từng chuyên đề bám sát cấu trúc đề thi.
                                         </div>
                                     </span>
                                 </li>
@@ -72,7 +72,7 @@ const ClassDetailScreen = () => {
                                     <span className="flex items-center gap-1">
                                         <MdCheck color="green" />
                                         <div className="w-[300px] text-sm">
-                                            Hiểu chi tiết về các khái niệm cơ bản trong JS
+                                        Hình thành tư duy phản xạ giải quyết các dạng bài
                                         </div>
                                     </span>
                                 </li>
@@ -82,7 +82,7 @@ const ClassDetailScreen = () => {
                                     <span className="flex items-center gap-1">
                                         <MdCheck color="green" />
                                         <div className="w-[300px] text-sm">
-                                            Hiểu chi tiết về các khái niệm cơ bản trong JS
+                                        Được học toàn diện kiến thức cơ bản và kỹ năng cần thiết
                                         </div>
                                     </span>
                                 </li>
@@ -90,7 +90,7 @@ const ClassDetailScreen = () => {
                                     <span className="flex items-center gap-1">
                                         <MdCheck color="green" />
                                         <div className="w-[300px] text-sm">
-                                            Hiểu chi tiết về các khái niệm cơ bản trong JS
+                                        Được hỗ trợ giải đáp thắc mắc trong suốt quá trình tham gia khóa học.
                                         </div>
                                     </span>
                                 </li>
@@ -99,7 +99,7 @@ const ClassDetailScreen = () => {
                                     <span className="flex items-center gap-1">
                                         <MdCheck color="green" />
                                         <div className="w-[300px] text-sm">
-                                            Hiểu chi tiết về các khái niệm cơ bản trong JS
+                                            Tự tin với các bài học và giành điểm số cao trong các bài thi/kiểm tra trên lớp.
                                         </div>
                                     </span>
                                 </li>
@@ -107,7 +107,7 @@ const ClassDetailScreen = () => {
                                     <span className="flex items-center gap-1">
                                         <MdCheck color="green" />
                                         <div className="w-[300px] text-sm">
-                                            Hiểu chi tiết về các khái niệm cơ bản trong JS
+                                        Động lực học tập - Tự giác học tập
                                         </div>
                                     </span>
                                 </li>

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
-
+import { banner01, banner02, banner03, banner04, banner05 } from "../../assets/Images/Banner"
 
 const Slider = () => {
     const slides = [
-        { url: "https://hocmai.vn/media/images/home/desktop/banner-slide-1.png", },
-        { url: "https://hocmai.vn/media/images/home/desktop/banner-slide-1.png", },
-        { url: "https://hocmai.vn/media/images/home/desktop/luyencaptochcm.png", },
-        { url: "https://hocmai.vn/media/images/home/desktop/26banner-weboanhntk3-715-x-400-1.png", },
-        { url: "https://hocmai.vn/media/images/home/desktop/pat-hust-plus715x400-1.png", },
+        banner01,
+        banner02,
+        banner03,
+        banner04,
+        banner05
     ]
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -36,17 +36,17 @@ const Slider = () => {
         }, 2000);
     });
     return (
-        <div className='max-w-[1024px] h-[450px] w-full m-auto px-4 relative group mt-[100px]'>
+        <div className='max-w-[1040px] h-[450px] w-full m-auto px-4 relative group mt-[100px]'>
             <div
-                style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+                style={{ backgroundImage: `url(${slides[currentIndex]})` }}
                 className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
             >
                 <div className='flex absolute bottom-0 right-[45%]  justify-center py-2'>
                     {slides.map((slide, slideIndex) => (
                         <div
-                            key={slideIndex}
+                            key={slide}
                             onClick={() => goToSlide(slideIndex)}
-                            className='text-2xl cursor-pointer'
+                            className='text-2xl cursor-pointer '
                         >
                             <RxDotFilled color={slideIndex == currentIndex ? 'white' : 'grey'} />
                         </div>
