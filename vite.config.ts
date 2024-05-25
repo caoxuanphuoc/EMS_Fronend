@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: "https://localhost:44311/api", //"http://ecms.io.vn:44311/api/",
+        target: "http://103.116.8.38:44311/api", //"https://localhost:44311/api", //"http://ecms.io.vn:44311/api/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
         secure: false,
