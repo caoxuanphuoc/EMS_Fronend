@@ -4,4 +4,4 @@ import banner03 from "./banner03.png"
 import banner04 from "./banner04.png"
 import banner05 from "./banner05.png"
 
-export {banner01, banner02, banner03, banner04, banner05}
+export { banner01, banner02, banner03, banner04, banner05 }
