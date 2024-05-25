@@ -4,6 +4,8 @@ import { ValidateOrderInfoDto } from "./Dto/ValidateOrderInfoDto";
 import { CreateOrderHistoryDto } from "./Dto/CreateOrderHistoryDto";
 import { OrderHistoryDto } from "./Dto/OrderHistoryDto";
 import { inputValidateOrderDto } from "./Dto/inputValidateOrderDto";
+const apiHost = import.meta.env.VITE_API_HOST;
+
 export class PaymentApiClass {
 
     config = {
@@ -21,7 +23,7 @@ export class PaymentApiClass {
 
     ValidateOrder = async (input: inputValidateOrderDto) => {
         const response: AxiosResponse<BaseResponse<ValidateOrderInfoDto>> =
-            await axios.post<BaseResponse<ValidateOrderInfoDto>>('/api/services/app/Order/ValidateOrder',
+            await axios.post<BaseResponse<ValidateOrderInfoDto>>(apiHost + '/api/services/app/Order/ValidateOrder',
                 input,
                 this.config
             );
@@ -31,7 +33,7 @@ export class PaymentApiClass {
     }
     GetVnpayUrl = async (input: ValidateOrderInfoDto) => {
         const response: AxiosResponse<BaseResponse<string>> =
-            await axios.post<BaseResponse<string>>('/api/PaymentControler/PaymentConfirm',
+            await axios.post<BaseResponse<string>>(apiHost + '/api/PaymentControler/PaymentConfirm',
                 input,
                 this.config
             );
@@ -41,7 +43,7 @@ export class PaymentApiClass {
     }
     updateStatusVnPay = async (input: CreateOrderHistoryDto) => {
         const response: AxiosResponse<BaseResponse<OrderHistoryDto>> =
-            await axios.post<BaseResponse<OrderHistoryDto>>('/api/services/app/OrderHistory/Create',
+            await axios.post<BaseResponse<OrderHistoryDto>>(apiHost + '/api/services/app/OrderHistory/Create',
                 input,
                 this.config
             );
