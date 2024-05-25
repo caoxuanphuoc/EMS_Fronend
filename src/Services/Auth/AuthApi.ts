@@ -2,6 +2,8 @@ import axios, { AxiosResponse, HttpStatusCode } from 'axios'
 import { BaseResponse } from '../Common/ResponseBase'
 import { loginDto } from './Dtos/loginDto'
 import { RegisterDto } from './Dtos/registerDto'
+const apiHost = import.meta.env.VITE_API_HOST;
+
 export class AuthApiClass {
     config = {
         headers: {
@@ -15,7 +17,7 @@ export class AuthApiClass {
     }
     login = async (body: any) => {
         const response: AxiosResponse<BaseResponse<loginDto>> =
-            await axios.post<BaseResponse<loginDto>>('/api/TokenAuth/Authenticate', body, {
+            await axios.post<BaseResponse<loginDto>>(apiHost + '/api/TokenAuth/Authenticate', body, {
                 headers: {
                     'Abp.TenantId': 1
 
@@ -31,7 +33,7 @@ export class AuthApiClass {
     }
     register = async (body: any) => {
         const response: AxiosResponse<BaseResponse<RegisterDto>> =
-            await axios.post<BaseResponse<RegisterDto>>('/api/User/Resgiter', body, this.config);
+            await axios.post<BaseResponse<RegisterDto>>(apiHost + '/api/User/Resgiter', body, this.config);
         return response.data
     }
 }

@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { BaseResponse } from "../Common/ResponseBase";
 import { SessionData } from "./Dtos/SessionData";
+const apiHost = import.meta.env.VITE_API_HOST;
 
 export class SessionApiClass {
 
@@ -17,7 +18,7 @@ export class SessionApiClass {
 
     GetDataSession = async () => {
         const response: AxiosResponse<BaseResponse<SessionData>> =
-            await axios.get<BaseResponse<SessionData>>('/api/services/app/Session/GetCurrentLoginInformations',
+            await axios.get<BaseResponse<SessionData>>(apiHost + '/api/services/app/Session/GetCurrentLoginInformations',
                 this.config
             );
         console.log("API", response.data);

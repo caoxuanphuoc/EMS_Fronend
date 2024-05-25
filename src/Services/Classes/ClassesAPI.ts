@@ -3,6 +3,7 @@ import { BaseResponse } from "../Common/ResponseBase";
 import { PagedClassResultRequestDto } from "./dto/PagedClassResultRequestDto";
 import { GetAllClassOuput } from "./dto/getAllClassOutput";
 import { PagedResultDto } from "../Common/PagedResultDto";
+const apiHost = import.meta.env.VITE_API_HOST;
 export class ClassesApiClass {
 
     config = {
@@ -18,18 +19,16 @@ export class ClassesApiClass {
 
     GetAllClass = async (input: PagedClassResultRequestDto) => {
         const response: AxiosResponse<BaseResponse<PagedResultDto<GetAllClassOuput>>> =
-            await axios.get<BaseResponse<PagedResultDto<GetAllClassOuput>>>('/api/services/app/Class/GetAll',
-                {
-                    params: input,
-                    headers: this.config.headers
-                }
-            );
+            await axios.get<BaseResponse<PagedResultDto<GetAllClassOuput>>>(apiHost + '/api/services/app/Class/GetAll', {
+                params: input,
+                headers: this.config.headers
+            });
 
-        return response.data
+        return response.data;
     }
     GetClassById = async (id: number) => {
         const response: AxiosResponse<BaseResponse<GetAllClassOuput>> =
-            await axios.get<BaseResponse<GetAllClassOuput>>('/api/services/app/Class/Get',
+            await axios.get<BaseResponse<GetAllClassOuput>>(apiHost + '/api/services/app/Class/Get',
                 {
                     params: {
                         id: id
