@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { loginDataDto } from '../../Services/Auth/Dtos/loginDataDto';
 import { useAppDispatch, useAppSelector } from '../../redux/hook'
 import { loginAction } from '../../redux/slices/AuthSlice';
 import { RegisterDto } from '../../Services/Auth/Dtos/registerDto';
 import { AuthApi } from '../../Services/Auth/AuthApi'
 import { RootState } from '../../redux/store';
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SesionDataAction } from '../../redux/slices/Session/SessionSlice';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { BaseResponse } from '../../Services/Common/ResponseBase';
 import { AxiosError } from 'axios';
 const Login = (props: any) => {
     //#region redux init
@@ -38,7 +37,7 @@ const Login = (props: any) => {
     const [name, setName] = useState("");
     const [surname, setsurName] = useState("");
     const [email, setemail] = useState("");
-    const [conPass, setconPass] = useState("");
+    //const [conPass, setconPass] = useState("");
     const [showErrComPass, setShowErrComPass] = useState(false)
 
 
@@ -87,7 +86,7 @@ const Login = (props: any) => {
         }
         try {
 
-            let response = await AuthApi.register(resgData)
+            await AuthApi.register(resgData)
             notify("Đăng nhập ngay nào", 1)
             setResgiterForm(false)
         } catch (e: unknown) {

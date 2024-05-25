@@ -1,5 +1,5 @@
 import { DayOfTheWeek } from './dateOfTheWeek'
-import { Shift } from "./shift"
+import { Shift } from "./Shift"
 
 export interface WorkShiftDto {
     dateOfWeek: DayOfTheWeek

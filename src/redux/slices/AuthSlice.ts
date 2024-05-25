@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { AuthApi } from '../../Services/Auth/AuthApi'
 import { loginDto } from '../../Services/Auth/Dtos/loginDto'
-import { errorData } from '../../Services/Common/ResponseBase'
 
 export const loginAction = createAsyncThunk(
     'auth/loginAction',

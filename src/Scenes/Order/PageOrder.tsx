@@ -4,7 +4,7 @@ import logo_nvpay from "../../assets/Images/vnpt-pay.png"
 import qrVietin from "../../assets/Images/qrVietin.jpg"
 import { Modal } from "antd";
 import Bill from "../../Components/Order/Bill";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { ValidateOrderInfoDto } from "../../Services/Payment/Dto/ValidateOrderInfoDto";
 import { PaymentApi } from "../../Services/Payment/PaymentService";
 import { inputValidateOrderDto } from "../../Services/Payment/Dto/inputValidateOrderDto";
@@ -27,7 +27,7 @@ const PageOrder = () => {
 
     const location = useLocation()
 
-    const [change, setchange] = useState(true)
+    //const [change, setchange] = useState(true)
 
     const ValidateOrder = async () => {
         const useQuery = () => {
@@ -45,7 +45,7 @@ const PageOrder = () => {
         const res = await PaymentApi.ValidateOrder(dataValid)
         console.log("order ValidateOrder", res);
         SetInforOrder(res.result);
-        setchange(false)
+        //setchange(false)
     }
     useEffect(() => {
         ValidateOrder()
@@ -54,7 +54,6 @@ const PageOrder = () => {
     //#endregion
 
     //#region get ULR vnpay
-    const navigate = useNavigate();
 
     const handleVnPay = async () => {
         const fetchLink = async () => {
