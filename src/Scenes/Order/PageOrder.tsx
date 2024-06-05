@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ValidateOrderInfoDto } from "../../Services/Payment/Dto/ValidateOrderInfoDto";
 import { PaymentApi } from "../../Services/Payment/PaymentService";
 import { inputValidateOrderDto } from "../../Services/Payment/Dto/inputValidateOrderDto";
-import { responsiveArray } from "antd/es/_util/responsiveObserver";
+//import { responsiveArray } from "antd/es/_util/responsiveObserver";
 
 const PageOrder = () => {
     //#region config info order
