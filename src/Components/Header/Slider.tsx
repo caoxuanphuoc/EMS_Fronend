@@ -36,7 +36,7 @@ const Slider = () => {
         }, 2000);
     });
     return (
-        <div className='max-w-[1040px] h-[450px] w-full m-auto px-4 relative group mt-[100px]'>
+        <div className='max-w-[1040px] h-[480px] w-full m-auto px-4 relative group mt-[50px]'>
             <div
                 style={{ backgroundImage: `url(${slides[currentIndex]})` }}
                 className='w-full h-full rounded-2xl bg-center bg-cover duration-500'

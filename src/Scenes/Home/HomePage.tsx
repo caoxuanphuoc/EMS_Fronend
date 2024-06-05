@@ -23,7 +23,7 @@ const HomePage = () => {
     return (
         <div >
             <div className="flex">
-                <div className="w-[500px] ml-7 mt-[220px]">
+                <div className="w-[500px] ml-7 mt-[160px]">
                     {/* <h1 className="text-7xl border-solid">M Tracker</h1> */}
                     <p className="text-6xl font-semibold leading-normal text-blue-500">M Tracker</p>
                     <p className="max-w-lg text-3xl font-semibold leading-normal text-gray-900 mb-4 text-blue-600" >Nơi tri thức là sức mạnh!</p>
@@ -33,7 +33,7 @@ const HomePage = () => {
                 </div>
                 <Slider />
             </div>
-            <div className="pt-10" id="search-bar">
+            <div className="pt-[70px]" id="search-bar">
                 <SearchBar />
             </div>
             <div className="px-10 flex flex-wrap gap-10 justify-center mt-10">
