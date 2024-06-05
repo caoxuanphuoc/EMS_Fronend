@@ -4,10 +4,11 @@ import logo_nvpay from "../../assets/Images/vnpt-pay.png"
 import qrVietin from "../../assets/Images/qrVietin.jpg"
 import { Modal } from "antd";
 import Bill from "../../Components/Order/Bill";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ValidateOrderInfoDto } from "../../Services/Payment/Dto/ValidateOrderInfoDto";
 import { PaymentApi } from "../../Services/Payment/PaymentService";
 import { inputValidateOrderDto } from "../../Services/Payment/Dto/inputValidateOrderDto";
+//import { responsiveArray } from "antd/es/_util/responsiveObserver";
 
 const PageOrder = () => {
     //#region config info order
@@ -42,9 +43,23 @@ const PageOrder = () => {
             userId: Number(userId),
             codeAffilate: "Nocode"
         };
-        const res = await PaymentApi.ValidateOrder(dataValid)
-        console.log("order ValidateOrder", res);
-        SetInforOrder(res.result);
+        try {
+            const res = await PaymentApi.ValidateOrder(dataValid)
+            console.log("order ValidateOrder", res);
+
+            SetInforOrder(res.result);
+        } catch (error: any) {
+            console.log("order ValidateOrder", error.response.status == 404);
+            if (error.response.status == 404) {
+                console.log("chuyen huong lien");
+
+                const navigate = useNavigate();
+                navigate(
+                    "/login"
+                );
+            }
+        }
+
         //setchange(false)
     }
     useEffect(() => {
@@ -60,6 +75,8 @@ const PageOrder = () => {
             const url = await PaymentApi.GetVnpayUrl(InforOrder)
             return url
         }
+        // caanf bat loi cho nay
+
         const link = await fetchLink()
         console.log("LINKKKKK", link);
         window.location.href = link;

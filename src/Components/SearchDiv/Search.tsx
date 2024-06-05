@@ -27,22 +27,25 @@ const SearchBar = () => {
                 <div className=" singleSearch flex items-center gap-2">
                     <label htmlFor="relevance" className="text-[#808080] rounded-[3px] px-4  "> Sort by: </label>
                     <select name="" id="relevance" className="bg-white rounded-[3px] px-4 ">
-                        <option value="">Gias</option>
-                        <option value="">Ten</option>
+                        <option value="">Giá</option>
+                        <option value="">Ngày tạo</option>
+                        <option value="">Số lượng học viên</option>
                     </select>
                 </div>
                 <div className=" singleSearch flex items-center gap-2">
                     <label htmlFor="relevance" className="text-[#808080] rounded-[3px] px-4  "> Sort by: </label>
                     <select name="" id="relevance" className="bg-white rounded-[3px] px-4 ">
-                        <option value="">Gias</option>
-                        <option value="">Ten</option>
+                        <option value="">Giảm dần</option>
+                        <option value="">Tăng dần</option>
                     </select>
                 </div>
                 <div className=" singleSearch flex items-center gap-2">
                     <label htmlFor="relevance" className="text-[#808080] rounded-[3px] px-4  "> Sort by: </label>
                     <select name="" id="relevance" className="bg-white rounded-[3px] px-4 ">
-                        <option value="">Gias</option>
-                        <option value="">Ten</option>
+                        <option value="">Toán</option>
+                        <option value="">Vật lý</option>
+                        <option value="">Hóa học</option>
+                        <option value="">Sinh học</option>
                     </select>
                 </div>
             </div>

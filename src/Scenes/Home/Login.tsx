@@ -108,6 +108,7 @@ const Login = (props: any) => {
             };
             dispatch(loginAction(loginData))
             console.log("Loging success", x);
+            dispatch(SesionDataAction())
             if (x != undefined)
                 return navigate("/");
 
